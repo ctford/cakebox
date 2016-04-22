@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "react": "15.0.1",
+    "react-dom": "15.0.1",
     "express": "4.13.4"
   },
   "description": "A server-side renderer for React.js components.",
