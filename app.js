@@ -17,7 +17,8 @@ var express = require('express');
 var app = express();
 
 app.get('/:module/:component', function (request, response) {
-  response.send(ReactDOMServer.renderToString(CreateCommentBox()));
+  var component = CreateCommentBox();
+  response.send(ReactDOMServer.renderToStaticMarkup(component));
 });
 
 app.listen(3000, function () {
