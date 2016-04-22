@@ -1,0 +1,17 @@
+{
+  "name": "cakebox",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.13.4"
+  },
+  "description": "A server-side renderer for React.js components.",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "server": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Ford",
+  "license": "MIT"
+}
