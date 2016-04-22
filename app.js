@@ -10,14 +10,14 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
     );
   }
 });
-
-var CreateCommentBox = React.createFactory(CommentBox);
+var comment = {commentBox: CommentBox};
 
 var express = require('express');
 var app = express();
 
 app.get('/:module/:component', function (request, response) {
-  var component = CreateCommentBox(request.query);
+  var Factory = React.createFactory(comment.commentBox);
+  var component = Factory(request.query);
   response.send(ReactDOMServer.renderToStaticMarkup(component));
 });
 
