@@ -6,13 +6,17 @@ var app = express();
 var modules = {timepicker: require('rc-time-picker'),
                search: require('apeman-react-search').ApSearch};
 
-app.get('/:module', function (request, response) {
-  var Factory = React.createFactory(modules[request.params.module]);
-  var component = Factory(request.query);
-  var fragment = ReactDOMServer.renderToStaticMarkup(component);
+var render = function (response, props, module) {
+  var Factory = React.createFactory(module);
+  var instance = Factory(props);
+  var fragment = ReactDOMServer.renderToStaticMarkup(instance);
   response
     .type("text/plain")
     .send(fragment);
+};
+
+app.get('/:module', function (request, response) {
+  render(response, request.query, modules[request.params.module]);
 });
 
 app.listen(3000, function () {
