@@ -16,5 +16,5 @@ app.get('/:module', function (request, response) {
 });
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('Cakebox is listening on port 3000.');
 });
