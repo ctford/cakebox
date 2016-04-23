@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 
 var modules = {timepicker: require('rc-time-picker'),
-               search: require('apeman-react-search').ApSearch};
+               search: require('apeman-react-search')};
 
 var render = function (response, props, module) {
   var Factory = React.createFactory(module);
@@ -17,6 +17,10 @@ var render = function (response, props, module) {
 
 app.get('/:module', function (request, response) {
   render(response, request.query, modules[request.params.module]);
+});
+
+app.get('/:module/:component', function (request, response) {
+  render(response, request.query, modules[request.params.module][request.params.component]);
 });
 
 app.listen(3000, function () {
