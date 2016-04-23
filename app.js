@@ -16,6 +16,13 @@ var modules = {comment: comment};
 var express = require('express');
 var app = express();
 
+// List the components available for the module.
+app.get('/:module', function (request, response) {
+  var module = modules[request.params.module];
+  response.send(Object.keys(module));
+});
+
+// Render the specified component.
 app.get('/:module/:component', function (request, response) {
   var Factory = React.createFactory(modules[request.params.module][request.params.component]);
   var component = Factory(request.query);
