@@ -3,15 +3,17 @@ var ReactDOMServer = require('react-dom/server');
 var express = require('express');
 var app = express();
 
-var modules = {timepicker: require('rc-time-picker'),
-               search: require('apeman-react-search')};
+var modules = {
+  timepicker: require('rc-time-picker'),
+  search: require('apeman-react-search'),
+  image: require('image-component').default
+};
 
 var render = function (response, props, module) {
   var Factory = React.createFactory(module);
   var instance = Factory(props);
   var fragment = ReactDOMServer.renderToStaticMarkup(instance);
   response
-    .type("text/plain")
     .send(fragment);
 };
 
